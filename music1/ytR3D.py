@@ -7,9 +7,9 @@ from pyrogram.types import *
 
 r = redis.Redis('localhost', decode_responses=True)
 ytdb = Database("YouTube-SQL.sqlite")
-ZAID = 519005873   #ايدي المطور
-TOKEN = "5964273157:AAGUJs4rjcIShByiHoVrE"
-YTchannel = "iffgjbfdz" #  يوزر قناة التخزين  بدون @
+ZAID = 7085943284   #ايدي المطور
+TOKEN = "7117654702:AAGbwqlPBovaLzaW05cS9MIzISSolEesfco"
+YTchannel = "ngd_2" #  يوزر قناة التخزين  بدون @
 Dev_Zaid = TOKEN.split(":")[0]
 client = Client(
   "ytZAID", 17954744, "7ad6189ad04c5d3a698b1b541e62c42b", bot_token=TOKEN,
@@ -73,7 +73,7 @@ async def yt_func(c,m,k,channel):
    text = m.text   
    rep = InlineKeyboardMarkup (
      [[
-       InlineKeyboardButton ('🧚‍♀️', url='https://t.me/E_K_Q')
+       InlineKeyboardButton ('🧚‍♀️', url='https://t.me/NGD_1')
      ]]
    )
    
@@ -141,7 +141,7 @@ async def yt_func(c,m,k,channel):
          audio_file,
          title=title,
          duration=duration,
-         caption=f' @E_K_Q ~ {duration_string} ⏳',
+         caption=f' @NGD_1 ~ {duration_string} ⏳',
          performer=info["channel"],reply_markup=rep)
          b = await a.copy(YTchannel)
          ytdb.set(f'ytvideo{res["id"]}',{"type":"audio","audio":b.link,"duration":a.audio.duration,"id":res["id"]})
@@ -169,7 +169,7 @@ async def getInfo(c, query):
           InlineKeyboardButton ("❖ فيديو", callback_data=f'{user_id}VIDEO{vid_id}'),
         ],
         [
-          InlineKeyboardButton ('🧚‍♀️', url='https://t.me/E_K_Q')
+          InlineKeyboardButton ('🧚‍♀️', url='https://t.me/NGD_1')
         ]
       ]
     )
@@ -189,7 +189,7 @@ async def audio_down(c, query):
     if r.get(f'{query.message.chat.id}:disableYT:{Dev_Zaid}'):  return False
     rep = InlineKeyboardMarkup (
      [[
-       InlineKeyboardButton ('🧚‍♀️', url='https://t.me/E_K_Q')
+       InlineKeyboardButton ('🧚‍♀️', url='https://t.me/NGD_1')
      ]]
     )
     if ytdb.get(f'ytvideo{vid_id}'):
@@ -215,7 +215,7 @@ async def audio_down(c, query):
       title=info['title'],
       duration=int(info['duration']),
       performer=info['channel'],
-      caption=f' @E_K_Q ~ ⏳ {sec}',
+      caption=f' @NGD_1 ~ ⏳ {sec}',
     )
     await query.edit_message_text(f":)", reply_markup=rep)
     b = await a.copy(YTchannel)
@@ -233,7 +233,7 @@ async def video_down(c, query):
     if r.get(f'{query.message.chat.id}:disableYT:{Dev_Zaid}'):  return False
     rep = InlineKeyboardMarkup (
      [[
-       InlineKeyboardButton ('🧚‍♀️', url='https://t.me/E_K_Q')
+       InlineKeyboardButton ('🧚‍♀️', url='https://t.me/NGD_1')
      ]]
     )
     if ytdb.get(f'ytvideoV{vid_id}'):
@@ -265,7 +265,7 @@ async def video_down(c, query):
     a = await query.message.reply_video(
       file_name,
       duration=int(info['duration']),
-      caption=f' @E_K_Q ~ ⏳ {sec}',
+      caption=f' @NGD_1 ~ ⏳ {sec}',
     )
     await query.edit_message_text(f":)", reply_markup=rep)
     b = await a.copy(YTchannel)
